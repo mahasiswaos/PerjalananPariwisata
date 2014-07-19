@@ -1,0 +1,92 @@
+<?php $__env->startSection('isi'); ?>
+<a href="/perjalanan/insert"> <button class="btn btn-success">tambah</button></a>
+<table class="table">
+    <tr>
+        <td>
+            NO
+        </td>
+        <td>
+            ID
+        </td>
+        <td>
+            Tempat Berangkat
+        </td>
+        <td>
+            Tujuan Perjalanan 
+        </td>
+        <td>
+            Jumlah Penumpang
+        </td>
+        <td>
+            Tanggal Berangkat
+        </td>
+        <td>
+            Jam Berangkat
+        </td>
+        <td>
+            ID Bus
+        </td>
+        <td>
+            ID Sopir 
+        </td>
+        <td>
+            Aksi
+        </td>
+    </tr>
+
+    <?php
+    $no=1;
+    foreach ($isi as $s) {
+        $id = $s['id'];
+        $tempat = $s['tempat_berangkat'];
+        $tujuan = $s['tujuan'];
+        $jpenumpang = $s['jumlah_penumpang'];
+        $tglberangkat = $s['tanggal_berangkat'];
+        $jamberangkat = $s['jam_berangkat'];
+        $idbus = $s['tabelBus_id'];
+        $idsopir = $s['tabelSupir_id'];
+
+
+        echo "<tr>";
+        echo "<td>";
+            echo $no;
+        echo "</td>";
+        echo "<td>";
+            echo $id;
+        echo "</td>";
+        echo "<td>";
+            echo $tempat;
+        echo "</td>";
+        echo "<td>";
+            echo $tujuan;
+        echo "</td>";
+        echo "<td>";
+            echo $jpenumpang;
+        echo "</td>";
+        echo "<td>";
+            echo $tglberangkat;
+        echo "</td>";
+        echo "<td>";
+            echo $jamberangkat;
+        echo "</td>";
+        echo "<td>";
+            echo $idbus;
+        echo "</td>";
+        echo "<td>";
+            echo $idsopir;
+        echo "</td>";
+        ?>
+    <td>
+        <a href="<?php echo URL::to('/perjalanan/delete/'.$id)?>"><button class="btn btn-danger">delete</button></a>
+        <a><button class="btn btn-success">update</button></a>
+    </td>
+    <?php
+    echo "</tr>";
+    }
+    $no++;
+    ?>
+
+
+</table>
+<?php $__env->stopSection(); ?> 
+<?php echo $__env->make('layout.perjalanan.perjalanan', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

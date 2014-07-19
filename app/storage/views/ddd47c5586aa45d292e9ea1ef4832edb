@@ -1,0 +1,82 @@
+<?php $__env->startSection('content'); ?>
+<a href="<?php echo URL::to('/perjalanan/insert'); ?>"><button class="btn btn-info">Tambah Data Perjalanan</button></a>
+<br>
+<br>
+<div class="panel panel-info">
+    <div class="panel-heading">
+        TABEL PERJALANAN
+    </div>
+    <div class="panel-body">
+        <table class="table text-center">
+            <tr>
+                 <td>
+                     <b>No.</b>
+                </td>
+                <td>
+                    <b>ID</b>
+                </td>
+                <td>
+                    <b>Tempat Berangkat</b>
+                </td>
+                <td>
+                    <b>Tujuan</b>
+                </td>
+                <td>
+                    <b>Jumlah Penumpang</b>
+                </td>
+                <td>
+                    <b>Tanggal Berangkat</b>
+                </td>
+                <td>
+                    <b>Jam Berangkat</b>
+                </td>
+                <td>
+                    <b>ID Bus</b>
+                </td>
+                <td>
+                    <b>ID Supir</b>
+                </td>
+                <td>
+                    <b>Aksi</b>
+                </td>
+            </tr>
+
+
+            <?php
+            $no = '1';
+            foreach ($dataprj as $v) {
+
+                echo "<tr>";
+                echo "<td>" . $nomer = $no . "</td>";
+                echo "<td>" . $id = $v['id'] . "</td>";
+                echo "<td>" . $idperj = $v['tempat_berangkat'] . "</td>";
+                echo "<td>" . $nama = $v['tujuan'] . "</td>";
+                echo "<td>" . $nama = $v['jumlah_penumpang'] . "</td>";
+                echo "<td>" . $tgl = $v['tanggal_berangkat'] . "</td>";
+                echo "<td>" . $jam = $v['jam_berangkat'] . "</td>";
+                echo "<td>" . $idbus = $v['tabelBus_id'] . "</td>";
+                echo "<td>" . $idsupir = $v['tabelSupir_id'] . "</td>";
+                echo "<td>";
+                ?>
+                <div class = "btn-group">
+                    <!--<button type = "button" class = "btn btn-info">Detail</button>-->
+                    <a href="<?php echo URL::to('/perjalanan/update/'.$v['id'])?>"><button type = "button" class = "btn btn-default">Update</button></a>
+                    <a href="<?php echo URL::to('/perjalanan/delete/'.$v['id']);?>"><button type = "button" class = "btn btn-danger">Delete</button></a>
+                </div>
+                <?php
+                echo "</td>";
+
+                echo "</tr>";
+                $no++;
+            }
+            ?>
+        </table>
+        <?php echo $dataprj->links(); ?>
+
+    </div>
+</div>
+</div>
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('layout.perjalanan.perjalanan', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

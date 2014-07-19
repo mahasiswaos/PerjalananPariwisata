@@ -1,0 +1,74 @@
+<?php $__env->startSection('content'); ?>
+<a href="<?php echo URL::to('/supir/insert'); ?>"><button class="btn btn-info">Tambah Supir Baru</button></a>
+<br>
+<br>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        TABEL SUPIR
+    </div>
+    <div class="panel-body">
+        <table class="table">
+            <tr>
+                <th>
+                    No.
+                </th>
+                <th>
+                    ID Supir
+                </th>
+                <th>
+                    Nama
+                </th>
+                <th>
+                    Alamat
+                </th>
+                <th>
+                    No. Telpon
+                </th>
+                <th>
+                    Agama
+                </th>
+                <th>
+                    Jenis Kelamin
+                </th>
+                <th>
+                    Aksi
+                </th>
+            </tr>
+
+
+            <?php
+            $no = '1';
+            foreach ($supir as $v) {
+
+                echo "<tr>";
+                echo "<td>" . $nomer = $no . "</td>";
+                echo "<td>" . $id = $v['id'] . "</td>";
+                echo "<td>" . $nama = $v['nama_supir'] . "</td>";
+                echo "<td>" . $alamat = $v['alamat'] . "</td>";
+                echo "<td>" . $telpon = $v['telpon'] . "</td>";
+                echo "<td>" . $agama = $v['agama'] . "</td>";
+                echo "<td>" . $jk = $v['jenis_kelamin'] . "</td>";
+                echo "<td>";
+                ?>
+                <div class = "btn-group">
+                    <!--<button type = "button" class = "btn btn-info">Detail</button>-->
+                    <a href="<?php echo URL::to('/supir/update/'.$v['id'])?>"><button type = "button" class = "btn btn-default">Update</button></a>
+                    <a href="<?php echo URL::to('/supir/delete/'.$v['id']);?>"><button type = "button" class = "btn btn-danger">Delete</button></a>
+                </div>
+                <?php
+                echo "</td>";
+
+                echo "</tr>";
+                $no++;
+            }
+            ?>
+        </table>
+        <?php echo $supir->links(); ?>
+
+    </div>
+</div>
+</div>
+<?php $__env->stopSection(); ?>
+
+
+<?php echo $__env->make('layout.supir.supir', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
